@@ -1,33 +1,34 @@
-namespace IPFSNodeLibrary;
-
-using static interfaces;
-
-public class IPFSMetaData: IIPFSFileMetadata
+namespace IPFSNodeLibrary
 {
-    private readonly IIPFSCommands _ipfsService;
+    using static interfaces;
 
-    public IPFSMetaData(IIPFSCommands commands)
+    public class IPFSMetaData: IIPFSFileMetadata
     {
-        _ipfsService = commands;
-    }
+        private readonly IIPFSCommands _ipfsService;
+
+        public IPFSMetaData(IIPFSCommands commands)
+        {
+            _ipfsService = commands;
+        }
     
-    public Task<string> GetCid()
-    {
-        throw new NotImplementedException();
-    }
+        public Task<string> GetCid()
+        {
+            throw new NotImplementedException();
+        }
 
-    public Task<string> GetFileName()
-    {
-        throw new NotImplementedException();
-    }
+        public Task<string> GetFileName()
+        {
+            throw new NotImplementedException();
+        }
 
-    public Task<string> GetSize()
-    {
-        throw new NotImplementedException();
-    }
+        public Task<string> GetSize()
+        {
+            throw new NotImplementedException();
+        }
 
-    public Task<string> GetData(HttpResponseMessage response)
-    {
-        throw new NotImplementedException();
+        public Task<string> GetData(HttpResponseMessage response)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

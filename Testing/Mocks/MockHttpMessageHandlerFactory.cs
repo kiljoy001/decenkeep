@@ -1,52 +1,52 @@
 using System.Net;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 using Moq;
 using Moq.Protected;
 
-public static class MockHttpMessageHandlerFactory
+namespace Testing.Mocks
 {
-    public static HttpClient CreateHttpClient(HttpStatusCode statusCode, string responseContent)
+    public static class MockHttpMessageHandlerFactory
     {
-        var handlerMock = new Mock<HttpMessageHandler>();
+        public static HttpClient CreateHttpClient(HttpStatusCode statusCode, string responseContent)
+        {
+            var handlerMock = new Mock<HttpMessageHandler>();
 
-        handlerMock.Protected()
-            .Setup<Task<HttpResponseMessage>>(
-                "SendAsync",
-                ItExpr.IsAny<HttpRequestMessage>(),
-                ItExpr.IsAny<CancellationToken>())
-            .ReturnsAsync(new HttpResponseMessage
-            {
-                StatusCode = statusCode,
-                Content = new StringContent(responseContent)
-            });
-
-        return new HttpClient(handlerMock.Object);
-    }
-
-    public static HttpClient CreateHttpClient(Dictionary<HttpRequestMessage, HttpResponseMessage> responses)
-    {
-        var handlerMock = new Mock<HttpMessageHandler>();
-
-        handlerMock.Protected()
-            .Setup<Task<HttpResponseMessage>>(
-                "SendAsync",
-                ItExpr.IsAny<HttpRequestMessage>(),
-                ItExpr.IsAny<CancellationToken>())
-            .ReturnsAsync((HttpRequestMessage request, CancellationToken cancellationToken) =>
-            {
-                if (responses.TryGetValue(request, out var response))
+            handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
                 {
-                    return response;
-                }
+                    StatusCode = statusCode,
+                    Content = new StringContent(responseContent)
+                });
 
-                return new HttpResponseMessage(HttpStatusCode.NotFound)
+            return new HttpClient(handlerMock.Object);
+        }
+
+        public static HttpClient CreateHttpClient(Dictionary<HttpRequestMessage, HttpResponseMessage> responses)
+        {
+            var handlerMock = new Mock<HttpMessageHandler>();
+
+            handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync((HttpRequestMessage request, CancellationToken cancellationToken) =>
                 {
-                    RequestMessage = request
-                };
-            });
+                    if (responses.TryGetValue(request, out var response))
+                    {
+                        return response;
+                    }
 
-        return new HttpClient(handlerMock.Object);
+                    return new HttpResponseMessage(HttpStatusCode.NotFound)
+                    {
+                        RequestMessage = request
+                    };
+                });
+
+            return new HttpClient(handlerMock.Object);
+        }
     }
 }

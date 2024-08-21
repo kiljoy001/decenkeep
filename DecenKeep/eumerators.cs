@@ -1,15 +1,16 @@
-namespace DecenKeep;
-
-public enum MenuOption
+namespace DecenKeep
 {
-    CreateBackupDirectory = 1,
-    AddFileToBackup,
-    RemoveBackupFile,
-    ListBackedUpFiles,
-    PinBackedUpFilesToIpfs,
-    ListPinnedFiles,
-    EncryptSecret,
-    PostSecretAndCidToEmercoin,
-    Help,
-    Exit
+    public enum MenuOption
+    {
+        CreateBackupDirectory = 1,
+        AddFileToBackup,
+        RemoveBackupFile,
+        ListBackedUpFiles,
+        PinBackedUpFilesToIpfs,
+        ListPinnedFiles,
+        EncryptSecret,
+        PostSecretAndCidToEmercoin,
+        Help,
+        Exit
+    }
 }

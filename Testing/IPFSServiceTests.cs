@@ -1,13 +1,11 @@
-using CustomGenerators;
-using FsCheck;
-using FsCheck.Xunit;
-using Moq;
 using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+using CustomGenerators;
+using FsCheck.Xunit;
+using IPFSNodeLibrary;
+using Testing.Mocks;
 using Xunit;
 
-namespace IPFSNodeLibrary.Tests
+namespace Testing
 {
     public class IPFSServiceTests
     {
