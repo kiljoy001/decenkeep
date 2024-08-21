@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+        <GenerateProgramFile>false</GenerateProgramFile>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="ByteArrayGeneratorTest.fs" />
+        <Compile Include="CidGeneratorTest.fs" />
+        <Compile Include="TestRunner.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FsCheck" Version="3.0.0-rc3" />
+        <ProjectReference Include="..\CustomGenerators\CustomGenerators.fsproj" />
+        <PackageReference Include="xunit" Version="2.8.1" />
+        <PackageReference Include="FsCheck.Xunit" Version="3.0.0-rc3" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+        <PackageReference Update="FSharp.Core" Version="8.0.400-beta.24229.4" />
+        
+    </ItemGroup>
+
+</Project>
