@@ -45,4 +45,4 @@ jobs:
 
     - name: Run tests for Testing
       working-directory: ./Testing
-      run: dotnet test --no-build --verbosity normal --configuration Release
+      run: dotnet test
