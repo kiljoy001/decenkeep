@@ -20,29 +20,29 @@ jobs:
       uses: actions/setup-dotnet@v4.0.1
     
     - name: Restore dependencies for CustomGenerators
-      working-directory: ./emerpki/CustomGenerators
+      working-directory: ./CustomGenerators
       run: dotnet restore
 
     - name: Restore dependencies for DecenKeep
-      working-directory: ./emerpki/DecenKeep
+      working-directory: ./DecenKeep
       run: dotnet restore
 
     - name: Restore dependencies for IPFSNodeLibrary
-      working-directory: ./emerpki/IPFSNodeLibrary
+      working-directory: ./IPFSNodeLibrary
       run: dotnet restore
 
     - name: Restore dependencies for GeneratorTesting
-      working-directory: ./emerpki/GeneratorTesting
+      working-directory: ./GeneratorTesting
       run: dotnet restore
 
     - name: Restore dependencies for Testing
-      working-directory: ./emerpki/Testing
+      working-directory: ./Testing
       run: dotnet restore
 
     - name: Run tests for GeneratorTesting
-      working-directory: ./emerpki/GeneratorTesting
+      working-directory: ./GeneratorTesting
       run: dotnet run --project GeneratorTesting.fsproj
 
     - name: Run tests for Testing
-      working-directory: ./emerpki/Testing
+      working-directory: ./Testing
       run: dotnet test --no-build --verbosity normal --configuration Release
