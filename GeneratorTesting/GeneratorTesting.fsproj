@@ -11,6 +11,7 @@
     <ItemGroup>
         <Compile Include="ByteArrayGeneratorTest.fs" />
         <Compile Include="CidGeneratorTest.fs" />
+        <Compile Include="HttpStatusCodeGeneratorTest.fs" />
         <Compile Include="TestRunner.fs" />
     </ItemGroup>
 

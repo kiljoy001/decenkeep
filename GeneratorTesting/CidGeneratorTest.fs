@@ -31,4 +31,5 @@ module CidGeneratorTest =
 
     // Run the property test
     let runTests () =
+        printfn "Running CidGeneratorTest..."
         Check.QuickThrowOnFailure (Prop.forAll CidGenerator.ArbIpfsCid prop_testCid)

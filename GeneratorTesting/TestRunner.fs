@@ -6,4 +6,5 @@ module TestRunner =
     let main _ =
         ByteArrayGeneratorTest.runTests ()
         CidGeneratorTest.runTests ()
+        HttpStatusCodeGeneratorTest.runTests ()
         0

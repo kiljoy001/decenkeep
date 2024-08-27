@@ -24,7 +24,7 @@ namespace Testing
             // Arrange
             var expectedResponse = new HttpResponseMessage(HttpStatusCode.OK)
             {
-                Content = new StringContent("{}")
+                Content = new StringContent($@"{{""Pins"": [""{cid}""] }}")
             };
             var httpClient = MockHttpMessageHandlerFactory.CreateHttpClient(new Dictionary<HttpRequestMessage, HttpResponseMessage>
             {

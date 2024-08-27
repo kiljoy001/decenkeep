@@ -12,4 +12,5 @@ module ByteArrayGeneratorTest =
 
     // Run the property test
     let runTests () =
+        printfn "Running ByteArrayGeneratorTest..."
         Check.QuickThrowOnFailure (Prop.forAll ByteArrayGenerator.byteArrayGen prop_testByteArray)

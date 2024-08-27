@@ -8,6 +8,7 @@
     <ItemGroup>
         <Compile Include="ByteArrayGenerator.fs" />
         <Compile Include="CidGenerator.fs" />
+        <Compile Include="HttpStatusCodeGenerator.fs" />
     </ItemGroup>
 
     <ItemGroup>
