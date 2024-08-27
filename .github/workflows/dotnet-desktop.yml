@@ -1,0 +1,48 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v4.0.1
+    
+    - name: Restore dependencies for CustomGenerators
+      working-directory: ./CustomGenerators
+      run: dotnet restore
+
+    - name: Restore dependencies for DecenKeep
+      working-directory: ./DecenKeep
+      run: dotnet restore
+
+    - name: Restore dependencies for IPFSNodeLibrary
+      working-directory: ./IPFSNodeLibrary
+      run: dotnet restore
+
+    - name: Restore dependencies for GeneratorTesting
+      working-directory: ./GeneratorTesting
+      run: dotnet restore
+
+    - name: Restore dependencies for Testing
+      working-directory: ./Testing
+      run: dotnet restore
+
+    - name: Run tests for GeneratorTesting
+      working-directory: ./GeneratorTesting
+      run: dotnet run --project GeneratorTesting.fsproj
+
+    - name: Run tests for Testing
+      working-directory: ./Testing
+      run: dotnet test
